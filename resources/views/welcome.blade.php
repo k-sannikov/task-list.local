@@ -69,6 +69,10 @@
             <div class="content">
                 <div class="title m-b-md">
                     {{ config('app.name', 'Laravel') }}
+                    @auth
+                        : {{ Auth::user()->name }}
+                    @endauth
+
                 </div>
                 <div class="links">
                   @if (Route::has('login'))
