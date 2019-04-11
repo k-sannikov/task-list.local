@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::group(['namespace' => 'Task'], function () {
+Route::group(['namespace' => 'Task', 'middleware' => 'auth'], function () {
     // маршрут для ресурсного контроллера TaskController
     Route::resource('tasks', 'TaskController');
 });
