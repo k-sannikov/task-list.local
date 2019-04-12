@@ -1,6 +1,6 @@
 <div class="form-group">
   <label for="inputName">Название задачи</label>
-  <input type="text" class="form-control" id="inputName" name="name" value="{{ $task->name ?? old('name')}}" placeholder="Введите название задачи" required>
+  <input type="text" class="form-control" id="inputName" name="name" value="{{ $task->name ?? old('name')}}" placeholder="Введите название задачи">
 </div>
 <div class="form-group">
   <label for="inputPriority">Приоритет задачи</label>

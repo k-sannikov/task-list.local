@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Task;
 
 use App\Model\Task;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
+use App\Http\Requests\TaskRequest;
 use App\Http\Controllers\Controller;
 
 class TaskController extends Controller
@@ -19,7 +19,6 @@ class TaskController extends Controller
         $tasks = Task::where('user_id', Auth::id())
                     ->orderBy('priority', 'desc')
                     ->get();
-
         return view('task.index', compact('tasks'));
     }
 
@@ -39,7 +38,7 @@ class TaskController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TaskRequest $request)
     {
         Task::create($request->all());
 
@@ -63,7 +62,7 @@ class TaskController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return view
      */
     public function edit($id)
     {
@@ -79,7 +78,7 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TaskRequest $request, $id)
     {
         $task = Task::findOrFail($id);
         $task->update($request->except('user_id'));
